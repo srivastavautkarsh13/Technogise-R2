@@ -77,7 +77,7 @@ To run the chess simulator application, navigate to the project root (the direct
 
 All unit tests are located in the `tests/` directory.
 
-1.  **Running All Tests (The Standard and Recommended Way):**
+1.  **Running All Tests Together (The Standard and Recommended Way):**
     This command will automatically find and run **all** test files (`test_*.py`) within the `tests` directory and its subdirectories. This is the most efficient way to run your complete test suite.
 
     a.  **Navigate to the project root:**
@@ -91,33 +91,69 @@ All unit tests are located in the `tests/` directory.
         ```
         (The `-v` flag provides verbose output, showing each test being run.)
 
-2.  **Running Specific Tests in the Interactive Console (For Debugging):**
-    This method is useful when you want to interactively debug a single test class or a specific test method.
+2.  **Running Tests in the Python Interactive Shell:**
 
-    a.  **Navigate to the project root** and start the Python interpreter:
-        ```bash
-        cd /path/to/your/chess_simulator_directory
-        python
-        ```
-    b.  **Inside the `>>>` console**, import `unittest` and your desired test class (e.g., `TestBoard`):
-        ```python
-        >>> import unittest
-        >>> from tests.test_board import TestBoard
-        ```
-    c.  **Run all tests within that specific class:**
-        ```python
-        >>> suite = unittest.TestSuite()
-        >>> suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestBoard)) # Use TestLoader for modern Python
-        >>> runner = unittest.TextTestRunner(verbosity=2)
-        >>> runner.run(suite)
-        ```
-    d.  **To run a single test method:**
-        ```python
-        >>> suite_method = unittest.TestSuite()
-        >>> suite_method.addTest(TestBoard('test_cell_to_coords_valid'))
-        >>> runner_method = unittest.TextTestRunner(verbosity=2)
-        >>> runner_method.run(suite_method)
-        ```
+    a.  **Running All Tests in the Interactive Console (For Advanced Debugging):**
+        This allows you to programmatically discover and run your entire test suite within the interactive shell environment.
+
+        i.  **Navigate to the project root** and start the Python interpreter:
+            ```bash
+            cd /path/to/your/chess_simulator_directory
+            python
+            ```
+        ii. **Inside the `>>>` console**, execute the following:
+            ```python
+            >>> import unittest
+            >>> import os
+            >>> import sys
+
+            # Optional: Add the current directory (your project root) to sys.path
+            # This is usually already handled if you started 'python' from the correct directory,
+            # but it's a robust way to ensure the 'tests' package is discoverable.
+            >>> sys.path.insert(0, os.getcwd())
+
+            # 1. Create a TestLoader instance
+            >>> loader = unittest.TestLoader()
+
+            # 2. Discover tests
+            #    - start_dir='tests': Tells the loader to start searching for tests in the 'tests' directory.
+            #    - pattern='test_*.py': This is the default pattern for test files, but explicitly stating it is clear.
+            >>> suite = loader.discover(start_dir='tests', pattern='test_*.py')
+
+            # 3. Create a TestRunner instance
+            >>> runner = unittest.TextTestRunner(verbosity=2) # verbosity=2 provides detailed output
+
+            # 4. Run the discovered tests
+            >>> runner.run(suite)
+            ```
+
+    b.  **Running Specific Tests in the Interactive Console (For Debugging Individual Cases):**
+        This method is useful when you want to interactively debug a single test class or a specific test method.
+
+        i.  **Navigate to the project root** and start the Python interpreter:
+            ```bash
+            cd /path/to/your/chess_simulator_directory
+            python
+            ```
+        ii. **Inside the `>>>` console**, import `unittest` and your desired test class (e.g., `TestBoard`):
+            ```python
+            >>> import unittest
+            >>> from tests.test_board import TestBoard
+            ```
+        iii. **Run all tests within that specific class:**
+            ```python
+            >>> suite = unittest.TestSuite()
+            >>> suite.addTest(unittest.TestLoader().loadTestsFromTestCase(TestBoard)) # Use TestLoader for modern Python
+            >>> runner = unittest.TextTestRunner(verbosity=2)
+            >>> runner.run(suite)
+            ```
+        iv. **To run a single test method:**
+            ```python
+            >>> suite_method = unittest.TestSuite()
+            >>> suite_method.addTest(TestBoard('test_cell_to_coords_valid'))
+            >>> runner_method = unittest.TextTestRunner(verbosity=2)
+            >>> runner_method.run(suite_method)
+            ```
 
 ## Error Handling
 
