@@ -20,8 +20,8 @@ Design Choices
 
 Future Enhancements
 
-**Problem Description
-**The program takes an input string consisting of a chess piece type and its starting position on an 8x8 chessboard (e.g., "Pawn, G1"). It then calculates and outputs all possible cells the piece can move to from its current position on an empty board, based on standard chess movement rules for the specified pieces.
+Problem Description
+The program takes an input string consisting of a chess piece type and its starting position on an 8x8 chessboard (e.g., "Pawn, G1"). It then calculates and outputs all possible cells the piece can move to from its current position on an empty board, based on standard chess movement rules for the specified pieces.
 
 Supported Pieces and Movements:
 
@@ -31,8 +31,8 @@ King: Moves 1 step at a time, in all 8 directions (vertical, horizontal, and dia
 
 Queen: Can move across the board in all 8 directions (vertical, horizontal, and diagonal).
 
-**Assumptions
-**To keep the solution focused and within the problem's scope, the following assumptions have been made:
+Assumptions
+To keep the solution focused and within the problem's scope, the following assumptions have been made:
 
 Pawn Movement: The pawn's "forward" movement is defined as increasing the row number (e.g., from A1 to A2, or B7 to B8). This is consistent with how a white pawn would move on a standard board. Since the board is empty, there are no black/white pieces or capturing rules to consider.
 
@@ -50,8 +50,8 @@ No UI: This is a console-only application.
 
 No Game Logic: This program only simulates single-piece movements and does not implement full chess game rules (e.g., capturing, check, checkmate, castling, en passant, pawn promotion).
 
-**Features
-**Modular Design: Separates concerns into Board, Piece (abstract base class), and concrete piece classes (Pawn, King, Queen).
+Features
+Modular Design: Separates concerns into Board, Piece (abstract base class), and concrete piece classes (Pawn, King, Queen).
 
 Clean Code: Follows Python's PEP 8 guidelines for readability and maintainability.
 
@@ -65,8 +65,8 @@ Handles cases where a pawn cannot move further (e.g., at row 8).
 
 Unit Test Coverage: Comprehensive unit tests ensure the correctness of board utilities and piece movements.
 
-**Project Structure
-**.
+Project Structure
+.
 ├── chess_simulator.py
 ├── test_chess_simulator.py
 └── README.md
@@ -77,8 +77,8 @@ test_chess_simulator.py: Contains unit tests for all classes and functions in ch
 
 README.md: This file, providing documentation for the project.
 
-**Setup Instructions
-**This project requires Python 3.6 or higher. No external libraries are needed beyond the standard Python library.
+Setup Instructions
+This project requires Python 3.6 or higher. No external libraries are needed beyond the standard Python library.
 
 Clone the repository:
 
@@ -87,8 +87,8 @@ cd <your_repo_name>
 
 (Note: Replace <your_github_repo_url> and <your_repo_name> with the actual details of your repository.)
 
-**How to Run
-**To run the program, execute chess_simulator.py from your terminal, passing the piece type and position as a single quoted argument.
+How to Run
+To run the program, execute chess_simulator.py from your terminal, passing the piece type and position as a single quoted argument.
 
 General Usage:
 
@@ -130,15 +130,15 @@ Output (to stderr):
 
 Error: Unknown chess piece type: 'Rook'. Supported types are Pawn, King, Queen.
 
-**Unit Tests
-**To run the unit tests, execute test_chess_simulator.py using the unittest module:
+Unit Tests
+To run the unit tests, execute test_chess_simulator.py using the unittest module:
 
 python -m unittest test_chess_simulator.py
 
 This will run all defined tests and report the results.
 
-**Design Choices
-**Object-Oriented Programming (OOP): The solution leverages OOP principles to model the chessboard and chess pieces.
+Design Choices
+Object-Oriented Programming (OOP): The solution leverages OOP principles to model the chessboard and chess pieces.
 
 Board class encapsulates board-related logic (coordinate conversions, boundary checks).
 
@@ -160,8 +160,8 @@ Readability: Clear variable names, comments, and adherence to PEP 8 contribute t
 
 Error Handling: try-except blocks are used to gracefully handle invalid input formats or out-of-bounds positions, providing informative error messages to the user.
 
-**Future Enhancements (Beyond Scope of Problem)
-**While outside the scope of this specific problem, potential future enhancements could include:
+Future Enhancements (Beyond Scope of Problem)
+While outside the scope of this specific problem, potential future enhancements could include:
 
 Implementing other chess pieces (Rook, Bishop, Knight, Pawn with initial two-step move and capturing).
 
