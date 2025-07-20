@@ -117,20 +117,20 @@ class TestQueen(unittest.TestCase):
     def test_queen_corner(self):
         queen = Queen("A1")
         expected_moves = [
-            "A2", "A3", "A4", "A5", "A6", "A7", "A8",  # Vertical
-            "B1", "C1", "D1", "E1", "F1", "G1", "H1",  # Horizontal
-            "B2", "C3", "D4", "E5", "F6", "G7", "H8"   # Diagonal
+            "A2", "A3", "A4", "A5", "A6", "A7", "A8",
+            "B1", "C1", "D1", "E1", "F1", "G1", "H1",
+            "B2", "C3", "D4", "E5", "F6", "G7", "H8"
         ]
         self.assertCountEqual(queen.get_possible_moves(), expected_moves)
 
     def test_queen_edge_row(self):
         queen = Queen("D1")
         expected_moves = [
-            "A1", "B1", "C1", "E1", "F1", "G1", "H1", # Horizontal
-            "D2", "D3", "D4", "D5", "D6", "D7", "D8", # Vertical
-            "A4", "B3", "C2", "E2", "F3", "G4", "H5", # Diagonal (top-left to bottom-right)
-            "A1", "B1", "C1", "E1", "F1", "G1", "H1", # Horizontal (already covered)
-            "C2", "E2", "B3", "F3", "A4", "G4", "H5"  # Diagonal (bottom-left to top-right)
+            "A1", "B1", "C1", "E1", "F1", "G1", "H1",
+            "D2", "D3", "D4", "D5", "D6", "D7", "D8",
+            "A4", "B3", "C2", "E2", "F3", "G4", "H5",
+            "A1", "B1", "C1", "E1", "F1", "G1", "H1",
+            "C2", "E2", "B3", "F3", "A4", "G4", "H5"
         ]
         # Remove duplicates from expected_moves for assertCountEqual
         expected_moves = list(set(expected_moves))

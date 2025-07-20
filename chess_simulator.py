@@ -236,8 +236,7 @@ def main():
         print("Example: python chess_simulator.py \"Queen, E4\"")
         sys.exit(1)
 
-    # input_string = sys.argv[1]
-    input_string = "Pawn,A4"
+    input_string = sys.argv[1]
 
     try:
         parts = [p.strip() for p in input_string.split(',')]
